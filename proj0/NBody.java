@@ -61,8 +61,9 @@ public class NBody
 			StdDraw.picture(0,0,back);
 			for (int j=0; j<M; j++)		
 			{
-				planets[j].draw();
+				
 				planets[j].update(dt, xForces[j][i], yForces[j][i]);
+				planets[j].draw();
 
 			}	
 			StdDraw.show();
