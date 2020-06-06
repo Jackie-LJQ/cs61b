@@ -48,14 +48,14 @@ public class NBody
 
 		for (int i=0; i<M; i++)
 		{	
-			for (int j=0; j<N; j++)
+			for (int j=0; j<=N; j++)
 				{
 					xForces[i][j] = planets[i].calcNetForceExertedByX(planets);
 					yForces[i][j] = planets[i].calcNetForceExertedByY(planets);
 				}
 		}
 		StdDraw.enableDoubleBuffering();
-		for (int i=0; i<N; i++)
+		for (int i=0; i<=N; i++)
 			{	
 			StdDraw.clear();
 			StdDraw.picture(0,0,back);
