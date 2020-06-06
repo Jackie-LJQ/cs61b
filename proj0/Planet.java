@@ -1,6 +1,6 @@
 public class Planet
 {
-  final static double G = 6.67e-11;
+  static final double G = 6.67e-11;
   public double xxPos;
   public double yyPos;
   public double xxVel;
@@ -27,33 +27,33 @@ public class Planet
     this.imgFileName=p.imgFileName;
   }
 
-  double calcDistance(Planet p)
+  public double calcDistance(Planet p)
   {
     double temp = Math.pow(this.xxPos-p.xxPos,2)+Math.pow(this.yyPos-p.yyPos, 2);
     return Math.sqrt(temp);
   }
 
-  double calcForceExertedBy(Planet p)
+  public double calcForceExertedBy(Planet p)
   {
     double dist = this.calcDistance(p);
     return this.mass*p.mass*G/Math.pow(dist,2);
   }
 
-  double calcForceExertedByX(Planet p)
+  public double calcForceExertedByX(Planet p)
   {
     double dist = this.calcDistance(p);
     double xdist = p.xxPos-this.xxPos;
     return this.calcForceExertedBy(p)*xdist/dist;
   }
 
-  double calcForceExertedByY(Planet p)
+  public double calcForceExertedByY(Planet p)
   {
     double dist = this.calcDistance(p);
     double ydist = p.yyPos-this.yyPos;
     return this.calcForceExertedBy(p)*ydist/dist;
   }
 
-  double calcNetForceExertedByX(Planet[] allplanet)
+  public double calcNetForceExertedByX(Planet[] allplanet)
   {
     double fx = 0;
     for (Planet p:allplanet){
@@ -64,7 +64,7 @@ public class Planet
   }
 
 
-  double calcNetForceExertedByY(Planet[] allplanet)
+  public double calcNetForceExertedByY(Planet[] allplanet)
   {
     double fy = 0;
     for (Planet p:allplanet){
@@ -74,7 +74,7 @@ public class Planet
     return fy;
   }
 
-  void update(double dt, double fx, double fy)
+  public void update(double dt, double fx, double fy)
   {
     this.xxVel = this.xxVel+fx/this.mass*dt;
     this.yyVel = this.yyVel+fy/this.mass*dt;
@@ -82,7 +82,7 @@ public class Planet
     this.yyPos = this.yyPos+this.yyVel*dt;
   }
 
-  void draw()
+  public void draw()
   {
     StdDraw.picture(xxPos, yyPos, imgFileName);
     // StdDraw.show();
