@@ -39,7 +39,7 @@ public class NBody
 		String back = "images/starfield.jpg";
 		StdDraw.picture(1e13,1e13,back);
 		Planet[] planets = readPlanets(filepath);
-
+		double radius = readRadius(filepath);
 		int N = (int)(T/dt);
 		int M = planets.length;
 		int x = 1;
@@ -69,6 +69,13 @@ public class NBody
 			StdDraw.show();
 			StdDraw.pause(2);
 			}
+		StdOut.printf("%d\n", planets.length);
+		StdOut.printf("%.2e\n", radius);
+		for (int i = 0; i < planets.length; i++) {
+		    StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
+		                  planets[i].xxPos, planets[i].yyPos, planets[i].xxVel,
+		                  planets[i].yyVel, planets[i].mass, planets[i].imgFileName);   
+}
 		
 		
 	}
