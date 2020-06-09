@@ -11,6 +11,8 @@ public class SLList{
 	private int size=0;
 	private IntNode Sentinel= new IntNode(0,null);
 
+	public SLList(){
+	}
 
 	public SLList(int x){
 		Sentinel.next=new IntNode(x,null);
@@ -61,10 +63,31 @@ public class SLList{
 				{dummy = dummy.next;}
 		}
 	}
+
+	public void insert(int x, int position){
+		IntNode dummy = Sentinel;
+		while (position > 0 ){
+			dummy = dummy.next;
+			position-=1;
+		}
+		dummy.next = new IntNode(x, dummy.next);
+	}
+
+	public void reverse(){
+		SLList head = new SLList();
+		IntNode dummy = Sentinel.next;
+		while (dummy!=null){
+			head.addFist(dummy.item);
+			dummy = dummy.next;
+		}
+		Sentinel = head.Sentinel;
+	}
+
+
 	public static void main(String[] args){
 		int[] x = new int[]{1,1,2,3,4};
 		SLList first = new SLList(x);
-		first.addLast(7);
+		first.insert(10,3);
 		while (first.Sentinel.next!=null){
 			System.out.println(first.getFirst());
 			first.Sentinel=first.Sentinel.next;
