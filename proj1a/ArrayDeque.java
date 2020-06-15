@@ -82,7 +82,7 @@ public class ArrayDeque<T> {
         return res;
     }
 
-    private T removeLast() {
+    public T removeLast() {
         if (size == 0) {
             return null;
         }
