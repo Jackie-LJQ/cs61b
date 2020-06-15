@@ -8,7 +8,7 @@ public class ArrayDeque<T> {
         size = 0;
         array = (T[]) new Object[8];
         first = 0;
-        last = 0;
+        last = 1;
     }
 
     private int plusOne(int x) {
@@ -33,7 +33,7 @@ public class ArrayDeque<T> {
 
     public void addFirst(T item) {
         array[first] = item;
-        first = plusOne(first);
+        first = minusOne(first);
         size++;
         if (size == array.length) {
             resize(size * 2);
@@ -42,7 +42,7 @@ public class ArrayDeque<T> {
 
     public void addLast(T item) {
         array[last] = item;
-        last = minusOne(last);
+        last = plusOne(last);
         size++;
         if (size == array.length) {
             resize(size * 2);
@@ -58,6 +58,9 @@ public class ArrayDeque<T> {
     }
 
     public void printDeque() {
+        if (this.isEmpty()) {
+            return;
+        }
         int f = plusOne(first);
         while (f != last) {
             System.out.print(array[f] + " ");
@@ -73,7 +76,7 @@ public class ArrayDeque<T> {
         first = plusOne(first);
         T res = array[first];
         size--;
-        if (array.length >= 16 && size < array.length/4) {
+        if (array.length >= 16 && size < array.length / 4) {
             resize(array.length / 2);
         }
         return res;
@@ -86,8 +89,8 @@ public class ArrayDeque<T> {
         last = minusOne(last);
         T res = array[last];
         size--;
-        if (array.length >= 16 && size < array.length/4) {
-            resize(array.length/2);
+        if (array.length >= 16 && size < array.length / 4) {
+            resize(array.length / 2);
         }
         return res;
     }
@@ -100,4 +103,19 @@ public class ArrayDeque<T> {
         return array[index];
     }
 
+//    public static void main(String[] args) {
+//        ArrayDeque<Integer> x = new ArrayDeque<Integer>();
+//        x.addFirst(3);
+//        x.addFirst(4);
+//        x.addLast(5);
+//        x.printDeque();
+//        x.removeLast();
+//        x.printDeque();
+//        x.removeFirst();
+//        x.removeLast();
+//        x.removeFirst();
+//    }
+
 }
+
+
