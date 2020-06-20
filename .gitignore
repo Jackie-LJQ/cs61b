@@ -1,0 +1,15 @@
+#all compiler file
+*.class
+
+#all txt file
+*.txt
+
+#all IntelliJ output folder
+**/out
+*.iml
+**/.idea
+
+#all data and txt and img
+**/data
+**/examples
+**/images
